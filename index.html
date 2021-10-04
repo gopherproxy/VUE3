@@ -11,12 +11,15 @@
 <body>
     <div id="app">
         <h2>My favourite books:</h2>
-        <div v-for="item in books">
-            <p>{{ item.title }} - {{ item.author }} - {{ item.date }}</p>
-            <button v-on:click="item.date++">Increase date</button>
-            <button @click="item.date--">Decrease date</button>
-            <button @click="changeTitle">Change the title to something else</button>
+        <div v-if="showBooks">
+            <div v-for="item, index in books">
+                <p>{{ item.title }} - {{ item.author }} - {{ item.date }}</p>
+                <button v-on:click="item.date++">Increase date</button>
+                <button @click="item.date--">Decrease date</button>
+                <button @click="changeTitle(index)">Change the title to something else</button>
+            </div>
         </div>
+        <p><button @click="showHideBooks"><span v-if="showBooks">Hide books</span><span v-else>Show books</span></button></p>
     </div>
     <script src="app.js"></script>
 </body>
