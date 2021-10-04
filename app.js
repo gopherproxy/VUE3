@@ -4,6 +4,7 @@ const app = Vue.createApp({
     //template: '<h2>I am the template now</h2>'
     data() {
         return {
+            showBooks : true, // bøgerne er synlige
             books: [
                 {
                     title: 'Jurassic Park',
@@ -25,9 +26,14 @@ const app = Vue.createApp({
     },
 
     methods: {
-        changeTitle() {
+        changeTitle(i) {
             //console.log('You clicked me!')
-            this.books.title = 'Something else'
+            //console.log(this.books[0].title)
+            this.books[i].title = 'Something else'
+        },
+
+        showHideBooks(){
+                this.showBooks = !this.showBooks;
         }
     }
 }
